@@ -1,36 +1,58 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Pogo - Simple Centralized Version Control
+description: A centralized version control system that is simple and easy to use
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Straightforward and efficient version control with first-class conflict support
   image:
     file: ../../assets/logo.svg
   actions:
-    - text: Get started
-      link: /guides/example/
+    - text: Get Started
+      link: /guides/getting-started
       icon: right-arrow
+      variant: primary
     - text: View on GitHub
       link: https://github.com/pogo-vcs/pogo
       icon: external
-      variant: minimal
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## Why Pogo?
 
 <CardGrid stagger>
-  <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
+  <Card title="Centralized Simplicity" icon="rocket">
+    Single source of truth for all your data with a straightforward
+    server-client architecture.
   </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
+  <Card title="Conflict-Friendly" icon="warning">
+    Conflicts are first-class citizens - push them to the remote and resolve
+    them when ready.
   </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
+  <Card title="Cross-Platform" icon="laptop">
+    Works consistently across Windows, macOS, and Linux with a unified CLI
+    experience.
   </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
+  <Card title="All File Types" icon="document">
+    Robust support for both text and binary files with efficient storage.
   </Card>
 </CardGrid>
+
+## Key Features
+
+- **No Named Branches**: Create branches by creating a child change
+- **Automatic Naming**: Changes are automatically named - no need to think about branch names
+- **Bookmarks**: Tag versions with meaningful names like `main` or `v1.0.0` - a bookmark replaces branches and tags you know from Git
+- **Go Module Support**: Import repositories directly as Go modules
+- **Simple Web UI**: Browse repositories easily through the built-in web interface
+- **Garbage Collection**: Automatic cleanup of unreachable data
+
+## Workflow Philosophy
+
+Pogo promotes a simple, efficient workflow:
+
+1. **Describe First**: Think about and document changes before implementation.
+2. **Work Iteratively**: Make changes and update the description if needed.
+3. **Iterate on a Change**: Overwrite a change as often as you like, until you are satiswied.
+4. **Branch Naturally**: Instead of creating brnaches with fixed naming rules, just create a child change that inherits the parent. Merge by creating a change with more than one parent.
+5. **Bookmark Important Versions**: Use bookmarks to mark releases and milestones. Use the `main` bookmark se identify your current development state.
