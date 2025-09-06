@@ -1,99 +1,96 @@
 ---
-title: pogo bookmark
+title: bookmark
 description: Manage bookmarks for changes
 ---
 
-The `bookmark` command manages bookmarks - named references to specific changes.
+Manage bookmarks that point to specific changes in your repository.
 
-## Synopsis
+Bookmarks in Pogo are similar to tags and branches in Git combined. They are
+named references to specific changes that make it easy to find important
+versions of your code.
+
+Common bookmark patterns:
+- "main" - The current production/stable version (treated specially by Pogo)
+- "v1.0.0", "v2.1.3" - Semantic version tags for releases
+- "feature-xyz" - Mark the completion of a feature
+- "before-refactor" - Mark a point before major changes
+
+The "main" bookmark is special, it's treated as the default branch and is
+what new users will see when they clone your repository.
+
+## Usage
 
 ```bash
-pogo bookmark [subcommand] [flags]
+pogo bookmark
 ```
 
-## Subcommands
+## Aliases
 
-- `set` - Set a bookmark to a change
-- `list` - List all bookmarks
+- `b`
 
-## Set Bookmark
+## bookmark list
 
-Set or move a bookmark to point to a specific change.
+List all bookmarks in the repository along with the changes they point to.
 
-### Synopsis
+This shows you all named references in your repository, making it easy to
+see important versions, releases, and the current "main" branch.
+
+## Usage
 
 ```bash
-pogo bookmark set <name> [change] [flags]
+pogo bookmark list
 ```
 
-### Arguments
+## Aliases
 
-- `name` - The bookmark name (required)
-- `change` - The change ID to bookmark (optional, defaults to current change)
+- `l`
 
-### Examples
+## Examples
 
 ```bash
-# Set bookmark on current change
+  # List all bookmarks
+  pogo bookmark list
+
+  # Using the short alias
+  pogo b l
+```
+
+## bookmark set
+
+Set a bookmark to point to a specific change.
+
+If no change is specified, the bookmark will point to the current change.
+Setting a bookmark to a change that already has the bookmark will move it.
+
+Bookmarks make changes read-only by default to preserve history. Use the
+push --force flag if you need to modify a bookmarked change.
+
+## Usage
+
+```bash
+pogo bookmark set <name> [change]
+```
+
+## Aliases
+
+- `s`
+
+## Examples
+
+```bash
+# Set "main" bookmark to current change
 pogo bookmark set main
 
-# Set bookmark on specific change
-pogo bookmark set v1.0.0 abc123
+# Set "v1.0.0" bookmark to current change
+pogo bookmark set v1.0.0
 
-# Move existing bookmark
-pogo bookmark set main def456
+# Set "main" bookmark to a specific change
+pogo bookmark set main sunny-sunset-42
+
+# Move an existing bookmark to current change
+pogo bookmark set production
+
+# Using the short alias
+pogo b s main
 ```
 
-## List Bookmarks
-
-Display all bookmarks in the repository.
-
-### Synopsis
-
-```bash
-pogo bookmark list [flags]
-```
-
-### Examples
-
-```bash
-# List all bookmarks
-pogo bookmark list
-
-# Output format:
-# main -> abc123
-# v1.0.0 -> def456
-# staging -> ghi789
-```
-
-## Bookmark Naming
-
-### Conventions
-
-- `main` - Primary development branch
-- `v1.0.0` - Version releases
-- `stable` - Latest stable release
-- `production` - Deployed to production
-- `staging` - In staging environment
-
-### Rules
-
-- Names must be alphanumeric with `-`, `_`, `.`, `/`
-- Cannot start with numbers
-- Case-sensitive
-- Must be unique
-
-## Special Bookmarks
-
-### main
-
-The `main` bookmark has special significance:
-- Default parent for new changes
-- Default target for pulls
-- Treated as the primary branch
-
-## Related Commands
-
-- [`pogo edit`](/reference/edit) - Switch to bookmarked change
-- [`pogo new`](/reference/new) - Create change from bookmark
-- [`pogo log`](/reference/log) - View history with bookmarks

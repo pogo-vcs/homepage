@@ -1,61 +1,56 @@
 ---
-title: pogo commit
+title: commit
 description: Describe, push, and create a new change in one command
 ---
 
-The `pogo commit` command combines three common operations into a single command: describe, push, and new. It's a convenience command for the typical workflow of finalizing a change.
+Commit is a convenience command that combines three operations:
+1. Set/update the description for the current change (describe)
+2. Push all changes to the server (push)
+3. Create a new empty change for future work (new)
 
-## Synopsis
+This command streamlines the common workflow of finishing work on the current
+change and starting fresh. It's similar to 'git commit' but remember that in
+Pogo, your work is continuously saved to the server rather than being staged
+locally first.
+
+The command will:
+- Open an editor for the description (unless -m or --no-edit is used)
+- Upload all your changes to the server
+- Create a new change with the current change as parent
+- Switch to the new change automatically
+- Display the updated change history
+
+This is ideal when you've completed a logical unit of work and want to start
+on something new while preserving the current state.
+
+## Usage
 
 ```bash
-pogo commit [flags]
+pogo commit
 ```
 
-## Description
+## Flags
 
-The commit command streamlines the workflow of:
+- `--description`, `-m` <string>: Description for the change
+- `--no-edit`: Skip the describe step
 
-1. Setting a description for the current change
-2. Pushing it to the server
-3. Creating a new change for continued work
-
-This is equivalent to running:
+## Examples
 
 ```bash
-pogo describe -m "Your message"
-pogo push
-pogo new
-```
+# Commit with an editor for the description
+pogo commit
 
-## Options
+# Commit with a description from command line
+pogo commit -m "fix: resolve database connection timeout"
 
-### `-m, --description`
-
-Description for the change. If not provided, opens your default editor.
-
-```bash
-pogo commit -m "Fix authentication bug in login flow"
-```
-
-### `--no-edit`
-
-Skip the describe step and use the existing description.
-
-```bash
+# Commit without changing the existing description
 pogo commit --no-edit
+
+# Typical workflow
+pogo describe -m "feat: add user authentication"
+# ... make changes ...
+pogo push
+# ... make more changes ...
+pogo commit  # Finalize and start new change
 ```
 
-### `-h, --help`
-
-Display help information for the command.
-
-## Related Commands
-
-- [`pogo describe`](/reference/describe) - Set change description
-- [`pogo push`](/reference/push) - Push changes to server
-- [`pogo new`](/reference/new) - Create a new change
-
-## See Also
-
-- [Basic Workflow Guide](/guides/basic-workflow)
-- [Understanding Changes](/concepts/changes)

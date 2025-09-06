@@ -1,56 +1,48 @@
 ---
-title: pogo describe
+title: describe
 description: Set the description for the current change
 ---
 
-The `pogo describe` command sets or updates the description for your current change. This description explains what the change does and why.
+Set or modify the description for the current change.
 
-## Synopsis
+In Pogo's workflow, you should describe your changes BEFORE you start working.
+This helps you think through what you're about to do and communicate your
+intentions to others. You can update the description as you work to reflect
+any changes in your implementation approach.
+
+If no description is provided via the -m flag, an editor will open where you
+can write a detailed description. The description follows the Conventional
+Commits format by default.
+
+The description is crucial for understanding the history of your project and
+should explain both WHAT changed and WHY it changed.
+
+## Usage
 
 ```bash
-pogo describe [flags]
-```
-
-## Description
-
-Use this command to document your changes before or during development. The description can be updated multiple times until you create a new change with `pogo new`.
-
-## Options
-
-### `-m, --description`
-Set the description directly from the command line.
-
-```bash
-pogo describe -m "Fix memory leak in worker threads"
-```
-
-### `-h, --help`
-Display help information for the command.
-
-## Examples
-
-### Interactive editing
-```bash
-# Opens your default editor
 pogo describe
 ```
 
-### Direct description
+## Aliases
+
+- `desc`
+- `rephrase`
+
+## Flags
+
+- `--description`, `-m` <string>: Description for the change
+
+## Examples
+
 ```bash
-pogo describe -m "Add caching layer to improve API response times"
+# Open an editor to write/edit the description
+pogo describe
+
+# Set description directly from command line
+pogo describe -m "feat: add user authentication system"
+
+# Use aliases for shorter commands
+pogo desc -m "fix: resolve memory leak in data processor"
+pogo rephrase -m "docs: update API documentation"
 ```
 
-### Multi-line description
-```bash
-pogo describe -m "Refactor authentication system
-
-- Switch from JWT to session-based auth
-- Add rate limiting
-- Improve error messages"
-```
-
-## Related Commands
-
-- [`pogo commit`](/reference/commit) - Describe, push, and create new change
-- [`pogo push`](/reference/push) - Push changes to server
-- [`pogo new`](/reference/new) - Create a new change
