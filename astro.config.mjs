@@ -1,12 +1,14 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { defineConfig } from "astro/config";
 import rehypeMermaid from "rehype-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://pogo-vcs.com",
   integrations: [
     starlight({
+      customCss: ["./src/styles/global.css"],
       title: "Pogo",
       tagline:
         "A centralized version control system that is simple and easy to use",
