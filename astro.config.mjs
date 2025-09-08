@@ -27,8 +27,8 @@ export default defineConfig({
           label: "Getting Started",
           items: [
             { label: "Introduction", slug: "index" },
-            { label: "Installation", slug: "guides/installation" },
             { label: "Quick Start", slug: "guides/getting-started" },
+            { label: "Installation", slug: "guides/installation" },
           ],
         },
         {
@@ -46,6 +46,7 @@ export default defineConfig({
             { label: "Basic Workflow", slug: "guides/basic-workflow" },
             { label: "Server Setup", slug: "guides/server-setup" },
             { label: "Authentication", slug: "guides/authentication" },
+            { label: "CI/CD Integration", slug: "guides/ci-cd" },
           ],
         },
         {
@@ -54,9 +55,11 @@ export default defineConfig({
             { label: "All Commands", slug: "reference/commands" },
             { label: "bookmark", slug: "reference/bookmark" },
             { label: "commit", slug: "reference/commit" },
+            { label: "completion", slug: "reference/completion" },
             { label: "describe", slug: "reference/describe" },
             { label: "edit", slug: "reference/edit" },
             { label: "gc", slug: "reference/gc" },
+            { label: "help", slug: "reference/help" },
             { label: "info", slug: "reference/info" },
             { label: "init", slug: "reference/init" },
             { label: "log", slug: "reference/log" },
