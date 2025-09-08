@@ -34,7 +34,6 @@ export default defineConfig({
         {
           label: "Core Concepts",
           items: [
-            { label: "Overview", slug: "concepts/overview" },
             { label: "Changes", slug: "concepts/changes" },
             { label: "Bookmarks", slug: "concepts/bookmarks" },
             { label: "Conflicts", slug: "concepts/conflicts" },
