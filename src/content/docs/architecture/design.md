@@ -5,166 +5,275 @@ description: Understanding Pogo's architecture and design decisions
 
 Pogo is designed as a centralized version control system with a clear separation between metadata and content storage. This architecture provides simplicity, efficiency, and scalability.
 
-## Core Components
+## Overview
 
-### Server Architecture
+Pogo is a centralized version control system that provides a single source of truth for version control with support for multiple file types, conflict resolution, and Go module compatibility.
 
-The Pogo server consists of three main components:
+Pogo stores metadata (repositories, changes, bookmarks, references) in PostgreSQL and stores file contents (blobs/objects) in a filesystem-backed object store. The object store is treated as the canonical storage for file contents; the database stores metadata and references to the objects.
 
-1. **PostgreSQL Database**: Stores all metadata about repositories, changes, files, and bookmarks
-2. **Object Store**: File system-based storage for actual file contents
-3. **gRPC API**: Provides the interface for client-server communication
+## C4 Diagrams
 
-### Client Architecture
+### Level 1: System Context
 
-The Pogo client is a single binary that handles:
+```mermaid
+graph TB
+    User[User]
+    Pogo[Pogo System]
+    PostgreSQL[(PostgreSQL Database)]
+    ObjectStore[(Object Store)]
+    GoModules[Go Module Consumers]
 
-- Working copy management
-- Change tracking and description
-- Communication with the server
-- Local caching for performance
-
-## Data Model
-
-### Changes
-
-Changes are the fundamental unit in Pogo. Each change represents a snapshot of the repository at a point in time.
-
-```
-Change
-├── ID (auto-generated)
-├── Description
-├── Parent Changes (0 or more)
-├── Child Changes (0 or more)
-└── Files (snapshot of all files)
+    User --> Pogo
+    Pogo --> PostgreSQL
+    Pogo --> ObjectStore
+    GoModules --> Pogo
 ```
 
-### Bookmarks
+### Level 2: Container Diagram
 
-Bookmarks are human-readable names that point to specific changes:
+```mermaid
+graph TB
+    User[User]
 
-- `main`: Special bookmark treated as the default branch
-- Version tags: `v1.0.0`, `v2.1.3`, etc.
-- Feature markers: Any custom name
+    subgraph "Pogo System"
+        CLI[CLI Client]
+        Server[Pogo Server]
+        WebUI[Web UI]
+    end
 
-### Files
+    PostgreSQL[(PostgreSQL Database)]
+    ObjectStore[(Object Store)]
+    GoModules[Go Module Consumers]
 
-Files are stored with:
-- Content hash (SHA-256)
-- Path within the repository
-- Mode (permissions)
-- Size
-
-## Storage Strategy
-
-### Metadata Storage
-
-All metadata is stored in PostgreSQL tables:
-
-- `repositories`: Repository information
-- `changes`: Change history and relationships
-- `files`: File metadata and associations
-- `bookmarks`: Named references to changes
-- `objects`: Object store references
-
-### Content Storage
-
-File contents are stored in the object store:
-
-```
-objects/
-├── aa/
-│   └── aa1234567890abcdef...
-├── ab/
-│   └── ab9876543210fedcba...
-└── ...
+    User --> CLI
+    User --> WebUI
+    CLI --> Server
+    WebUI --> Server
+    Server --> PostgreSQL
+    Server --> ObjectStore
+    GoModules --> Server
 ```
 
-Files are:
-- Named by their SHA-256 hash
-- Stored in a two-level directory structure
-- Deduplicated across all repositories
-- Compressed when beneficial
+### Level 3: Component Diagram - Server
 
-## Communication Protocol
+```mermaid
+graph TB
+    subgraph "Pogo Server"
+        GrpcService[gRPC Service]
+        HttpServer[HTTP Server]
+        WebUIHandler[Web UI Handler]
+        GoProxyHandler[Go Module Proxy Handler]
+        AuthService[Auth Service]
+        RepoService[Repository Service]
+        FileService[File Service]
+        BookmarkService[Bookmark Service]
+        ChangeService[Change Service]
+        ServerIO[Server I/O / Object Store Adapter]
+        DbLayer[Database Layer]
+        ObjectStore[(Object Store)]
+    end
 
-Pogo uses gRPC for client-server communication:
+    GrpcService --> AuthService
+    GrpcService --> RepoService
+    GrpcService --> FileService
+    GrpcService --> BookmarkService
+    GrpcService --> ChangeService
 
-### Key Operations
+    HttpServer --> WebUIHandler
+    HttpServer --> GoProxyHandler
+    HttpServer --> GrpcService
+    HttpServer --> AuthService
+    HttpServer --> FileService
 
-1. **Push**: Upload changes and file contents
-2. **Pull**: Download changes and file contents
-3. **Query**: Get repository information
-4. **Bookmark**: Manage named references
+    WebUIHandler --> AuthService
+    WebUIHandler --> RepoService
 
-### Authentication
+    GoProxyHandler --> RepoService
+    GoProxyHandler --> FileService
 
-- Personal Access Tokens (PATs) for user authentication
-- Stored securely in system keyring on client
-- Transmitted via gRPC metadata
+    AuthService --> DbLayer
+    RepoService --> DbLayer
+    FileService --> DbLayer
+    BookmarkService --> DbLayer
+    ChangeService --> DbLayer
 
-## Design Decisions
+    ServerIO --> ObjectStore
 
-### Why Centralized?
+    FileService --> ServerIO
+    ChangeService --> ServerIO
 
-1. **Simplicity**: Single source of truth eliminates complexity
-2. **Consistency**: No merge conflicts between distributed copies
-3. **Control**: Organizations maintain full control over their data
-4. **Performance**: Optimized for common workflows
+    DbLayer --> PostgreSQL[(PostgreSQL)]
+```
 
-### Why PostgreSQL?
+### Level 3: Component Diagram - CLI Client
 
-1. **Reliability**: Battle-tested database with ACID guarantees
-2. **Querying**: Rich SQL capabilities for complex operations
-3. **Scalability**: Handles millions of files efficiently
-4. **Ecosystem**: Extensive tooling and monitoring options
+```mermaid
+graph TB
+    subgraph "CLI Client"
+        CobraCommands[Cobra Commands]
+        ClientCore[Client Core]
+        GrpcClient[gRPC Client]
+        AuthManager[Auth Manager]
+        FileManager[File Manager]
+        RepoConfig[Repository Config]
+    end
 
-### Why Object Store?
+    CobraCommands --> ClientCore
+    ClientCore --> GrpcClient
+    ClientCore --> AuthManager
+    ClientCore --> FileManager
+    ClientCore --> RepoConfig
 
-1. **Efficiency**: Deduplication saves significant space
-2. **Simplicity**: File system is reliable and easy to backup
-3. **Flexibility**: Can be replaced with S3-compatible storage
-4. **Performance**: Direct file access without database overhead
+    GrpcClient --> Server[Pogo Server]
+    AuthManager --> TokenStore[System Keyring]
+    RepoConfig --> ConfigFile[.pogo.yaml]
+```
 
-## Scalability Considerations
+## Data Flow
 
-### Database Scaling
+### Repository Initialization
 
-- Indexes on frequently queried columns
-- Partitioning for large tables
-- Read replicas for query distribution
+```mermaid
+sequenceDiagram
+    participant User
+    participant CLI
+    participant Client
+    participant Server
+    participant Database
 
-### Object Store Scaling
+    User->>CLI: pogo init
+    CLI->>Client: OpenNew()
+    Client->>Client: GetOrCreateToken()
+    Client->>Server: gRPC Init()
+    Server->>Database: CreateRepository()
+    Database-->>Server: RepoID, ChangeID
+    Server-->>Client: InitResponse
+    Client->>Client: Save .pogo.yaml
+    Client-->>CLI: Success
+    CLI-->>User: Repository initialized
+```
 
-- Sharding across multiple volumes
-- CDN integration for distributed teams
-- S3-compatible backend for cloud deployment
+### Push Operation
 
-### Garbage Collection
+```mermaid
+sequenceDiagram
+    participant User
+    participant CLI
+    participant Client
+    participant Server
+    participant Database
+    participant ObjectStore
 
-Adaptive GC strategy based on repository size:
-- Small repos: In-memory processing
-- Large repos: Batch processing with constant memory
+    User->>CLI: pogo push
+    CLI->>Client: OpenFromFile()
+    Client->>Client: Load .pogo.yaml
+    Client->>Client: Scan local files
+    Client->>Server: gRPC PushFull stream
+    loop For each file
+        Client->>Server: FileHeader
+        Client->>Server: FileContent chunks
+        Client->>Server: EOF
+    end
+    Client->>Server: EndOfFiles
+    Server->>ObjectStore: Store file objects
+    Server->>Database: Store metadata and create change (object refs)
+    Database-->>Server: Success
+    Server-->>Client: PushFullResponse
+    Client-->>CLI: Success
+    CLI-->>User: Push complete
+```
 
-## Security Model
+Notes:
 
-### Access Control
+- File contents are written to the object store (filesystem) as immutable blobs.
+- The database stores metadata and references (object IDs / paths / hashes) to those blobs; metadata updates are transactional.
 
-- Repository-level permissions
-- Token-based authentication
-- Optional LDAP/SSO integration
+### Web UI Access
 
-### Data Protection
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant HTTPServer
+    participant WebUI
+    participant AuthService
+    participant Database
 
-- SHA-256 content verification
-- Optional encryption at rest
-- TLS for all network communication
+    User->>Browser: Navigate to Pogo
+    Browser->>HTTPServer: GET /
+    HTTPServer->>WebUI: Handle request
+    WebUI->>AuthService: Check session
+    AuthService->>Database: Validate token
+    Database-->>AuthService: User info
+    AuthService-->>WebUI: Authenticated
+    WebUI->>Database: Get repositories
+    Database-->>WebUI: Repository list
+    WebUI-->>HTTPServer: Render HTML
+    HTTPServer-->>Browser: HTML response
+    Browser-->>User: Display UI
+```
 
-## Future Enhancements
+## Key Design Patterns
 
-Planned architectural improvements:
+### 1. Unified Server Architecture
 
-1. **Distributed Object Store**: S3-compatible backend support
-2. **Caching Layer**: Redis for frequently accessed metadata
-3. **Federation**: Multiple servers with replication
-4. **Streaming**: Large file support with chunked transfers
+- Single binary serves both gRPC (for CLI) and HTTP (for Web UI)
+- HTTP/2 with h2c for protocol detection
+- Shared business logic between interfaces
+
+### 2. Stream-Based File Transfer
+
+- gRPC streaming for efficient large file handling
+- Chunked transfer with headers and content separation
+- Support for multiple file encodings (UTF-8, UTF-16, UTF-32)
+
+### 3. Token-Based Authentication
+
+- Personal access tokens stored locally
+- Automatic token creation and management
+- Shared authentication between CLI and Web UI
+
+### 4. Change-Based Version Control
+
+- Each push creates a new change with unique ID
+- Bookmarks point to specific changes
+- Support for multiple parents (merge) and children (branch)
+
+### 5. Hybrid Storage (Database + Object Store)
+
+- PostgreSQL stores metadata, relationships, and indexes for queries
+- Files (content blobs) are stored in a filesystem-backed object store (immutable objects)
+- Metadata references objects by ID/path/hash; the DB and object store together represent the full repository state
+
+### 6. Transactional Consistency
+
+- Metadata updates happen in transactions in PostgreSQL
+- Object writes are done before committing metadata that references them; if object writes fail, the DB transaction is not committed
+
+### 7. Object Store & Garbage Collection
+
+- Garbage collection removes unreferenced objects from the object store and corresponding DB records
+- Adaptive GC strategy:
+  - Small-scale (< 10 million files): in-memory hash set for fast lookups
+  - Large-scale (>= 10 million files): batched processing with constant memory usage
+- GC can be run manually (`pogo gc`) or as a scheduled background task when the server runs
+- The threshold and GC parameters are configurable via environment variables (e.g. `GC_MEMORY_THRESHOLD`)
+
+### 8. Interactive Terminal UI
+
+- BubbleTea-based log viewer for scrollable output
+- Automatically activated when log output exceeds terminal height
+- Can be disabled with `--no-pager` flag
+- Keyboard navigation (arrows, page up/down, home/end)
+
+## Technology Stack
+
+- **Language**: Go
+- **CLI Framework**: Cobra
+- **RPC**: gRPC with Protocol Buffers
+- **Database**: PostgreSQL with sqlc
+- **Object Store**: Local filesystem (configurable path); stores immutable blobs
+- **Web UI**: Templ templates
+- **HTTP Server**: net/http with HTTP/2 support
+- **Build Tool**: Just
+- **TUI Components**: Charm BubbleTea for interactive terminal UI (log viewer)
