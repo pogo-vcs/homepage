@@ -7,7 +7,7 @@ Pogo treats conflicts as first-class citizens, allowing you to push conflicted c
 
 ## Philosophy
 
-Traditional version control systems block progress when conflicts occur. Pogo takes a different approach:
+Traditional decentralized version control systems block progress when conflicts occur. Pogo takes a different approach:
 
 - **Push with conflicts**: Continue working even with unresolved conflicts
 - **Defer resolution**: Resolve conflicts when you have time and context
@@ -18,101 +18,82 @@ Traditional version control systems block progress when conflicts occur. Pogo ta
 
 Conflicts happen when:
 
-1. Two changes modify the same part of a file differently
+1. Two changes modify the same part of a text file differently
 2. One change deletes a file another modifies
-3. Binary files are changed in incompatible ways
+3. Binary files are changed in both parent changes
 4. Directory structure changes conflict
 
 ### Example Scenario
 
-```
-main (abc123): "Hello, World!"
-  ├── change1 (def456): "Hello, Pogo!"
-  └── change2 (ghi789): "Hi, World!"
+```mermaid
+graph TB
+    Main["hello, world"]
+    Feat1["hello, pogo"]
+    Feat2["hi, world"]
+    Conflict["<<<<<<<<< change1
+    hello, pogo
+    =========
+    hi, world
+    >>>>>>>>> change2"]
+    Resolve["hi, pogo"]
+
+    Main --> Feat1
+    Main --> Feat2
+    Feat1 --> Conflict
+    Feat2 --> Conflict
+    Conflict --> Resolve
+
 ```
 
 Merging change1 and change2 creates a conflict.
+
+This conflict can be resolved in the same or a new change.
+In this example, a new change is created, baset on the merge. The conflict is resolved in this new change.
+
+The conflict is still stored in the history.
 
 ## Conflict Markers
 
 Pogo uses standard conflict markers in text files:
 
 ```
-<<<<<<<<< A
-Hello, Pogo!
+<<<<<<<<< change1
+hello, pogo
 =========
-Hi, World!
+hi, world change2
 >>>>>>>>> B
 ```
 
 ### Marker Components
 
-- `<<<<<<<<<`: Start of first change
+- `<<<<<<<<<`: Start of first change, followed by the name of the change
 - `=========` Separator between changes
-- `>>>>>>>>>`: Start of second change
+- `>>>>>>>>>`: Start of second change, followed by the name of the change
 
-## Working with Conflicts
+Log shows 💥 if there are conflicts in a change:
 
-### Detecting Conflicts
-
-Log shows if there are conflicts in a change:
-
-```bash
-pogo log
+```ansi
+$ pogo [36mlog[0m
+  ●   [35mK[0m[90mPHRpdJnwyPcLH4a[0m
+  │   hi, pogo
+  ○   [35mD[0m[90mKJbFrEkyhLpnCm3[0m 💥
+  │   merge
+○─┤   [35mR[0m[90mJcALPmeLceea4hL[0m
+│ │   hello, pogo
+│ ╰─○ [35mw[0m[90mEpaCJnAELNrDFyk[0m
+│   │ hi, world
+╰─○─╯ [35mh[0m[90mfEJKLREKxhDfK4b[0m
+      hello, world
 ```
 
-### Pushing with Conflicts
-
-```bash
-# Pogo allows pushing conflicted changes
-pogo push
-
-# Server accepts and stores conflicts
-# Other users can see conflicts exist
-```
-
-This enables:
-
-- Saving work in progress
-- Sharing problems with team
-- Continuing other work
-- Collaborative resolution
-
-## Resolving Conflicts
-
-### Manual Resolution
-
-1. **Open conflicted file**
-
-```bash
-nvim conflicted-file.txt
-```
-
-2. **Choose or combine versions**
+The merge `DKJbFrEkyhLpnCm3` contains the conflict markers:
 
 ```
-# Keep current version
-Hello, Pogo!
-
-# Or keep incoming
-Hi, World!
-
-# Or combine
-Hello, Pogo World!
-```
-
-3. **Remove conflict markers**
-
-```
-<<<<<<<<<
+<<<<<<<<< RJcALPmeLceea4hL
+hello, pogo
 =========
->>>>>>>>>
-```
-
-4. **Save and push**
-
-```bash
-pogo push
+hi, world
+>>>>>>>>> wEpaCJnAELNrDFyk
 ```
 
 ## Conflict Types
@@ -184,8 +165,9 @@ Pogo doesn't notice semantic conflicts, you will need other ways to find them.
 
 Conflicts can propagate:
 
-```
-main -> feature1 (conflict) -> feature2 (inherits conflict)
+```mermaid
+graph LR
+    Main --> F1["feature1 (conflict)"] --> F2["feature2 (inherits conflict)"]
 ```
 
 ### Conflict Recovery
@@ -201,12 +183,6 @@ pogo new
 
 # Try different resolution
 ```
-
-## Conflict Status
-
-### Visual Indicators
-
-Pogo uses clear indicator: 💥 emoji in log when conflicts exist
 
 ## Next Steps
 

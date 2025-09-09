@@ -15,6 +15,11 @@ export default defineConfig({
       logo: {
         src: "./src/assets/logo.svg",
       },
+      expressiveCode: {
+        shiki: {
+          bundledLangs: ["bash"],
+        },
+      },
       social: [
         {
           icon: "github",
