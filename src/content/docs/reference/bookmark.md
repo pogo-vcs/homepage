@@ -18,6 +18,8 @@ Common bookmark patterns:
 The "main" bookmark is special, it's treated as the default branch and is
 what new users will see when they clone your repository.
 
+This command pushes any changes before running.
+
 ## Usage
 
 ```bash
@@ -53,6 +55,39 @@ pogo bookmark list
 
   # Using the short alias
   pogo b l
+```
+
+## bookmark remove
+
+Remove a bookmark from the repository.
+
+This permanently removes the named reference to a change, but does not
+delete the change itself. The change will still exist and can be
+accessed by its change name.
+
+## Usage
+
+```bash
+pogo bookmark remove <name>
+```
+
+## Aliases
+
+- `rm`
+- `delete`
+- `del`
+
+## Examples
+
+```bash
+  # Remove a bookmark
+  pogo bookmark remove old-version
+
+  # Remove the main bookmark (be careful!)
+  pogo bookmark remove main
+
+  # Using the short alias
+  pogo b rm v1.0.0
 ```
 
 ## bookmark set

@@ -27,6 +27,8 @@ This command is useful for:
 - Removing accidentally created changes
 - Pruning unnecessary history before archiving
 
+This command pushes any changes before running.
+
 ## Usage
 
 ```bash

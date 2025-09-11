@@ -9,14 +9,15 @@ Pogo provides a comprehensive set of commands for version control operations. Al
 
 These flags are available for all commands:
 
-- `--no-pager`: Disable pager for all output
 - `--time`: Measure command execution time
+- `--verbose`, `-v`: Enable verbose debug logging
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
 | [bookmark](/reference/bookmark) | Manage bookmarks for changes |
+| [clone](/reference/clone) | Clone a repository from a Pogo server |
 | [commit](/reference/commit) | Describe, push, and create a new change in one command |
 | [completion](/reference/completion) | Generate the autocompletion script for the specified shell |
 | [describe](/reference/describe) | Set the description for the current change |

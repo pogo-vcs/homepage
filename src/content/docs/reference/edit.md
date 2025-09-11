@@ -10,7 +10,7 @@ current working directory contents with them. It's similar to 'git checkout'
 but in Pogo's centralized model.
 
 Important notes:
-- Any uncommitted local changes will be LOST - push first if you want to keep them
+- Any uncommitted local changes will be pushed to the current change before switching
 - The change you switch to becomes your new working change
 - You can edit any change, even if it has children (though pushing will require --force)
 - Files in .pogoignore are not affected by this operation
@@ -20,6 +20,8 @@ Use this command to:
 - Go back to an earlier version to fix a bug
 - Review someone else's changes
 - Start working from a different base
+
+This command pushes any changes before running.
 
 ## Usage
 

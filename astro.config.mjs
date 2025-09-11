@@ -17,7 +17,7 @@ export default defineConfig({
       },
       expressiveCode: {
         shiki: {
-          bundledLangs: ["bash"],
+          bundledLangs: ["bash", "yaml"],
         },
       },
       social: [

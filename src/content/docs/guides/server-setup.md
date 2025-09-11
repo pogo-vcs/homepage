@@ -29,6 +29,7 @@ services:
     environment:
       - PORT=8080
       - DATABASE_URL=postgres://pogo:pogo@db:5432/pogo
+      - PUBLIC_ADDRESS=https://pogo.example.com
       volumes:
         - ./pogo_data/:/data/
   db:
@@ -80,11 +81,12 @@ Configure your Pogo server with these environment variables:
 
 | Variable              | Description                          | Default        |
 | --------------------- | ------------------------------------ | -------------- |
-| `DATABASE_URL`        | PostgreSQL connection string         | Required       |
+| `DATABASE_URL`        | PostgreSQL connection string         | **Required**   |
 | `PORT`                | Port                                 | `8080`         |
 | `HOST`                | Bind address                         | `0.0.0.0:8080` |
 | `GC_MEMORY_THRESHOLD` | File count threshold for GC strategy | `10000000`     |
 | `ROOT_TOKEN`          | Personal access token for root user  | Random         |
+| `PUBLIC_ADDRESS`      | Public address for HTTP server       | **Required**   |
 
 ### Database Setup
 
