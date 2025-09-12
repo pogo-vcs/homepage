@@ -6,6 +6,7 @@ description: Display the current working copy status
 Display information about the current working copy and repository status.
 
 This command is particularly useful for:
+
 - Checking which change you're currently working on
 - Seeing if there are any conflicts
 - Integrating Pogo status into your shell prompt
@@ -13,17 +14,32 @@ This command is particularly useful for:
 
 The output can be customized using Go's text/template syntax with the --format flag.
 
-Available template variables:
-  {{.ChangeNamePrefix}}   - The adjective part of the change name  
-  {{.ChangeNameSuffix}}   - The noun and number part of the change name  
-  {{.ChangeName}}         - The full change name (prefix + suffix)  
-  {{.ChangeDescription}}  - The description of the current change  
-  {{.Bookmarks}}          - Array of bookmarks pointing to this change  
-  {{.IsInConflict}}       - Boolean indicating if the change has conflicts  
-  {{.Error}}              - Any error message (connection issues, etc.)  
+Available template variables:  
+
+| Variable                 | Description                                    |
+| ------------------------ | ---------------------------------------------- | 
+| `{{.ChangeNamePrefix}}`  | The adjective part of the change name          |
+| `{{.ChangeNameSuffix}}`  | The noun and number part of the change name    |
+| `{{.ChangeName}}`        | The full change name (prefix + suffix)         |
+| `{{.ChangeDescription}}` | The description of the current change          |
+| `{{.Bookmarks}}`         | Array of bookmarks pointing to this change     |
+| `{{.IsInConflict}}`      | Boolean indicating if the change has conflicts |
+| `{{.Error}}`             | Any error message (connection issues, etc.)    |
 
 The default format shows a colored prompt-friendly output with conflict
 indicators and bookmark information.
+
+Fish shell integration:
+
+```fish
+function fish_vcs_prompt --description 'Print all vcs prompts'
+    pogo info $argv
+    or fish_jj_prompt $argv
+    or fish_git_prompt $argv
+    or fish_hg_prompt $argv
+    or fish_fossil_prompt $argv
+end
+```
 
 ## Usage
 

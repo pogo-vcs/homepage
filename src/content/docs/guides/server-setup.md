@@ -12,6 +12,10 @@ This guide covers setting up a Pogo server for your team or organization.
 - Storage space for repositories
 - Network access on port 8080 or whatever you choose for HTTP and gRPC
 
+## Root user
+
+On the first run, Pogo server will create a Root user with one random personal access token and print it to stdout. Use this token to log in to the server. After the first run, the token will never be shown again.
+
 ## Installation Methods
 
 ### Docker (Recommended)

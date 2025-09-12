@@ -51,6 +51,7 @@ export default defineConfig({
             { label: "Server Setup", slug: "guides/server-setup" },
             { label: "Authentication", slug: "guides/authentication" },
             { label: "CI/CD Integration", slug: "guides/ci-cd" },
+            { label: "Shell Integration", slug: "guides/shell-integration" },
           ],
         },
         {

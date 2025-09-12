@@ -19,6 +19,10 @@ For other installation methods, see the [Installation Guide](/guides/installatio
 
 The easiest way to get your own Pogo server is by using [Docker](https://www.docker.com). A prebuilt image is available at `ghcr.io/pogo-vcs/pogo:alpine` which runs on x64 and arm64 architectures with Linux kernals.
 
+On the first run, Pogo server will create a Root user with one random personal access token and print it to stdout.
+Use this token to log in to the server.
+After the first run, the token will never be shown again.
+
 The port can be confugured using the `PORT` environment variable. The default is `8080`.
 Make sure you add a reverse proxy with SSL certificates in front of the Pogo server if you intend to make it publicly accessible.
 
