@@ -10,16 +10,22 @@ export default defineConfig({
     starlight({
       customCss: ["./src/styles/global.css"],
       title: "Pogo",
+      description: "Pogo centralized VCS documentation",
+      editLink: {
+        baseUrl: "https://github.com/pogo-vcs/homepage/edit/main/",
+      },
+      lastUpdated: true,
       tagline:
         "A centralized version control system that is simple and easy to use",
       logo: {
         src: "./src/assets/logo.svg",
       },
       expressiveCode: {
-        shiki: {
-          bundledLangs: ["bash", "yaml"],
-        },
+        shiki: true,
+        textMarkers: true,
+        frames: true,
       },
+      credits: true,
       social: [
         {
           icon: "github",
