@@ -14,10 +14,10 @@ This command is particularly useful for:
 
 The output can be customized using Go's text/template syntax with the --format flag.
 
-Available template variables:  
+Available template variables:
 
 | Variable                 | Description                                    |
-| ------------------------ | ---------------------------------------------- | 
+| ------------------------ | ---------------------------------------------- |
 | `{{.ChangeNamePrefix}}`  | The adjective part of the change name          |
 | `{{.ChangeNameSuffix}}`  | The noun and number part of the change name    |
 | `{{.ChangeName}}`        | The full change name (prefix + suffix)         |

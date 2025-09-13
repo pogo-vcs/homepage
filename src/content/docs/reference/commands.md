@@ -19,11 +19,9 @@ These flags are available for all commands:
 | [bookmark](/reference/bookmark) | Manage bookmarks for changes |
 | [clone](/reference/clone) | Clone a repository from a Pogo server |
 | [commit](/reference/commit) | Describe, push, and create a new change in one command |
-| [completion](/reference/completion) | Generate the autocompletion script for the specified shell |
 | [describe](/reference/describe) | Set the description for the current change |
 | [edit](/reference/edit) | Switch to a different change for editing |
 | [gc](/reference/gc) | Run garbage collection on the server |
-| [help](/reference/help) | Help about any command |
 | [info](/reference/info) | Display the current working copy status |
 | [init](/reference/init) | Initialize a new repository on a given Pogo server |
 | [log](/reference/log) | Show the change history |
