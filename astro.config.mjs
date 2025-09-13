@@ -75,6 +75,7 @@ export default defineConfig({
             { label: "help", slug: "reference/help" },
             { label: "info", slug: "reference/info" },
             { label: "init", slug: "reference/init" },
+            { label: "invite", slug: "reference/invite" },
             { label: "log", slug: "reference/log" },
             { label: "new", slug: "reference/new" },
             { label: "push", slug: "reference/push" },
