@@ -26,7 +26,7 @@ pogo log
 
 ## Flags
 
-- `--color`: Enable colored output (default: `true`)
+- `--color`: Enable colored output
 - `--number`, `-n` <int32>: Maximum number of changes to display (default: `10`)
 
 ## Examples
