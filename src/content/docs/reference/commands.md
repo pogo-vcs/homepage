@@ -26,6 +26,7 @@ These flags are available for all commands:
 | [help](/reference/help) | Help about any command |
 | [info](/reference/info) | Display the current working copy status |
 | [init](/reference/init) | Initialize a new repository on a given Pogo server |
+| [invite](/reference/invite) | Manage user invitations |
 | [log](/reference/log) | Show the change history |
 | [new](/reference/new) | Create a new change based on one or more parent changes |
 | [push](/reference/push) | Push all changes to the configured Pogo server |
