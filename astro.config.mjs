@@ -48,6 +48,7 @@ export default defineConfig({
             { label: "Changes", slug: "concepts/changes" },
             { label: "Bookmarks", slug: "concepts/bookmarks" },
             { label: "Conflicts", slug: "concepts/conflicts" },
+            { label: "License", slug: "concepts/license" },
           ],
         },
         {
