@@ -48,7 +48,7 @@ graph TB
 Merging change1 and change2 creates a conflict.
 
 This conflict can be resolved in the same or a new change.
-In this example, a new change is created, baset on the merge. The conflict is resolved in this new change.
+In this example, a new change is created, based on the merge. The conflict is resolved in this new change.
 
 The conflict is still stored in the history.
 
