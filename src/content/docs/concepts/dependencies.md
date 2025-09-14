@@ -5,18 +5,19 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-09-13 16:16:34
+Generated on: 2025-09-14 20:41:53
 
 ## Summary
 
-Total dependencies: 22
+Total dependencies: 24
 
 ### License Distribution
 
 - Apache-2.0: 1
 - Apache-2.0, MIT: 1
 - Other: 2
-- MIT License: 12
+- MIT License: 13
+- BSD 2-Clause "Simplified" License: 1
 - Apache License 2.0: 3
 - BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
@@ -80,6 +81,18 @@ Total dependencies: 22
 **License:** [MIT License](https://github.com/fergusstrange/embedded-postgres/blob/main/LICENSE)
 
 **Homepage:** https://github.com/fergusstrange/embedded-postgres
+
+---
+
+### github.com/gen2brain/beeep
+
+**Version:** v0.11.1
+
+**Description:** Go cross-platform library for sending desktop notifications, alerts and beeps
+
+**License:** [BSD 2-Clause "Simplified" License](https://github.com/gen2brain/beeep/blob/main/LICENSE)
+
+**Homepage:** https://github.com/gen2brain/beeep
 
 ---
 
@@ -177,6 +190,18 @@ Total dependencies: 22
 
 ---
 
+### github.com/rjeczalik/notify
+
+**Version:** v0.9.3
+
+**Description:** File system event notification library on steroids.
+
+**License:** [MIT License](https://github.com/rjeczalik/notify/blob/main/LICENSE)
+
+**Homepage:** https://github.com/rjeczalik/notify
+
+---
+
 ### github.com/robfig/cron/v3
 
 **Version:** v3.0.1
@@ -239,7 +264,7 @@ Total dependencies: 22
 
 ### golang.org/x/net
 
-**Version:** v0.42.0
+**Version:** v0.44.0
 
 **License:** [BSD-3-Clause](https://pkg.go.dev/golang.org/x/net?tab=licenses)
 
