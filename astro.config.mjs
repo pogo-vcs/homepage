@@ -4,12 +4,32 @@ import { defineConfig } from "astro/config";
 import rehypeMermaid from "rehype-mermaid";
 import fs from "fs";
 import path from "path";
+import yaml from "js-yaml";
 
 function generateSidebar() {
   const contentDir = path.join(process.cwd(), "src/content/docs");
 
-  // Helper function to create a nice label from filename
-  function createLabel(filename) {
+  // Helper function to extract title from frontmatter using proper YAML parsing
+  function extractTitle(filePath) {
+    try {
+      const content = fs.readFileSync(filePath, "utf8");
+      const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+      if (frontmatterMatch) {
+        const frontmatterYaml = frontmatterMatch[1];
+        const parsed = yaml.load(frontmatterYaml);
+        if (parsed && parsed.title) {
+          return parsed.title;
+        }
+      }
+    } catch (error) {
+      console.warn(
+        `Could not read frontmatter from ${filePath}:`,
+        error.message,
+      );
+    }
+
+    // Fallback to filename-based label
+    const filename = path.basename(filePath);
     return filename
       .replace(/\.mdx?$/, "")
       .replace(/[-_]/g, " ")
@@ -37,18 +57,23 @@ function generateSidebar() {
           path.join(relativePath, entry.name),
         );
         if (subItems.length > 0) {
+          // Use directory name as fallback
+          const dirLabel = entry.name
+            .replace(/[-_]/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase());
           items.push({
-            label: createLabel(entry.name),
+            label: dirLabel,
             items: subItems,
           });
         }
       } else if (entry.name.match(/\.(md|mdx)$/)) {
+        const fullPath = path.join(dirPath, entry.name);
         const slug = path.join(
           relativePath,
           entry.name.replace(/\.(md|mdx)$/, ""),
         );
         items.push({
-          label: createLabel(entry.name),
+          label: extractTitle(fullPath),
           slug: slug.replace(/\\/g, "/"), // Normalize path separators
         });
       }
@@ -62,9 +87,20 @@ function generateSidebar() {
     {
       label: "Getting Started",
       items: [
-        { label: "Introduction", slug: "index" },
-        { label: "Quick Start", slug: "guides/getting-started" },
-        { label: "Installation", slug: "guides/installation" },
+        {
+          label: extractTitle(path.join(contentDir, "index.mdx")),
+          slug: "index",
+        },
+        {
+          label: extractTitle(
+            path.join(contentDir, "guides/getting-started.md"),
+          ),
+          slug: "guides/getting-started",
+        },
+        {
+          label: extractTitle(path.join(contentDir, "guides/installation.md")),
+          slug: "guides/installation",
+        },
       ],
     },
     {
@@ -83,7 +119,10 @@ function generateSidebar() {
     {
       label: "Command Reference",
       items: [
-        { label: "All Commands", slug: "reference/commands" },
+        {
+          label: extractTitle(path.join(contentDir, "reference/commands.md")),
+          slug: "reference/commands",
+        },
         ...scanDirectory(
           path.join(contentDir, "reference"),
           "reference",
