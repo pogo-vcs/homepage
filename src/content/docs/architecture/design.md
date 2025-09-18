@@ -272,7 +272,7 @@ sequenceDiagram
 - **CLI Framework**: Cobra
 - **RPC**: gRPC with Protocol Buffers
 - **Database**: PostgreSQL with sqlc
-- **Object Store**: Local filesystem (configurable path); stores immutable blobs
+- **Object Store**: Local filesystem; stores immutable blobs
 - **Web UI**: Templ templates
 - **HTTP Server**: net/http with HTTP/2 support
 - **Build Tool**: Just
