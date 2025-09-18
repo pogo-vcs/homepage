@@ -20,6 +20,7 @@ These flags are available for all commands:
 | [clone](/reference/clone) | Clone a repository from a Pogo server |
 | [commit](/reference/commit) | Describe, push, and create a new change in one command |
 | [completion](/reference/completion) | Generate the autocompletion script for the specified shell |
+| [daemon](/reference/daemon) | Manage Pogo daemon service |
 | [describe](/reference/describe) | Set the description for the current change |
 | [edit](/reference/edit) | Switch to a different change for editing |
 | [gc](/reference/gc) | Run garbage collection on the server |
