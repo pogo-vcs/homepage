@@ -29,7 +29,7 @@ services:
     depends_on:
       - db
     ports:
-      - 4321:4321
+      - 80:8080
     environment:
       - PORT=8080
       - DATABASE_URL=postgres://pogo:pogo@db:5432/pogo
