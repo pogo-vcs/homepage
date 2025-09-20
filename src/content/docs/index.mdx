@@ -23,18 +23,31 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
 <CardGrid stagger>
   <Card title="Centralized Simplicity" icon="rocket">
     Single source of truth for all your data with a straightforward
-    server-client architecture.
-  </Card>
-  <Card title="Conflict-Friendly" icon="warning">
-    Conflicts are first-class citizens - push them to the remote and resolve
-    them when ready.
+    server-client architecture. Easy to deploy on your own servers or a hosted
+    VPS.
   </Card>
   <Card title="Cross-Platform" icon="laptop">
-    Works consistently across Windows, macOS, and Linux with a unified CLI
+    Works consistently across Windows, macOS, and Linux with a unified
     experience.
   </Card>
   <Card title="All File Types" icon="document">
     Robust support for both text and binary files with efficient storage.
+  </Card>
+  <Card title="Conflict-Friendly" icon="warning">
+    Push conflicts to the remote and resolve them later
+  </Card>
+  <Card title="Go Module Support" icon="seti:go">
+    Import a Pogo repository as a Go module, no additional configuration or
+    software required.
+  </Card>
+  <Card title="Bookmarks" icon="open-book">
+    Tag versions with bookmarks, like <code>main</code> for the current version
+    or <code>v1.0.0</code> for a specific version. <code>main</code> is treated
+    like a default branch in Git.
+  </Card>
+  <Card title="No Named Branches" icon="comment">
+    Create branches by adding multiple children to a change and merge them by
+    creating a new change with multiple parents. Changes are automaticall named.
   </Card>
 </CardGrid>
 
