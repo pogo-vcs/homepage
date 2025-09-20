@@ -34,8 +34,8 @@ services:
       - PORT=8080
       - DATABASE_URL=postgres://pogo:pogo@db:5432/pogo
       - PUBLIC_ADDRESS=https://pogo.example.com
-      volumes:
-        - ./pogo_data/:/data/
+    volumes:
+      - ./pogo_data/:/data/
   db:
     image: postgres:17-alpine
     environment:
