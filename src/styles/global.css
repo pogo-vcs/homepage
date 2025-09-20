@@ -27,3 +27,8 @@ li {
         line-height: 1.5em !important;
     }
 }
+
+.video-frame {
+    aspect-ratio: 16 / 9;
+    display: block;
+}

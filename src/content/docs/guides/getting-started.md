@@ -5,6 +5,19 @@ description: Learn how to get started with Pogo version control
 
 Welcome to Pogo! This guide will walk you through the basics of using Pogo for version control.
 
+## Watch the intro video
+
+<iframe
+  class="video-frame"
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/W6-YJHy7_A8?si=lLbdbEdpzg2n_79Z"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
 ## Install client
 
 The recommended way to install Pogo is with [Homebrew](https://brew.sh). Prebuilt binaries are available for macOS and Linux (both x64 and arm64).
