@@ -27,6 +27,7 @@ pogo log
 ## Flags
 
 - `--color`: Enable colored output
+- `--json`: Output log data as JSON
 - `--number`, `-n` <int32>: Maximum number of changes to display (default: `10`)
 
 ## Examples
@@ -40,5 +41,8 @@ pogo log -n 50
 
 # Disable colored output
 pogo log --color=false
+
+# Output as JSON
+pogo log --json
 ```
 
