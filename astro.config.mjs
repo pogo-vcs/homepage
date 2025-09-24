@@ -147,6 +147,18 @@ export default defineConfig({
   integrations: [
     starlight({
       customCss: ["./src/styles/global.css"],
+      head: [
+        {
+          tag: "link",
+          attrs: {
+            rel: "preload",
+            href: "/fonts/JetBrainsMonoNerdFontPropo-Regular.woff2",
+            as: "font",
+            type: "font/woff2",
+            crossorigin: "anonymous",
+          },
+        },
+      ],
       title: "Pogo",
       description: "Pogo centralized VCS documentation",
       editLink: {

@@ -1,34 +1,34 @@
 .tagline,
 li {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
 @font-face {
-    font-family: "JetBrains Mono Nerd Font Propo";
-    src: url("/fonts/JetBrainsMonoNerdFontPropo-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "JetBrains Mono Nerd Font Propo";
+  src: url("/fonts/JetBrainsMonoNerdFontPropo-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --font-mono:
-        "JetBrains Mono Nerd Font Propo", ui-monospace, SFMono-Regular, Menlo,
-        Monaco, "Roboto Mono", monospace;
+  --font-mono:
+    "JetBrains Mono Nerd Font Propo", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, "Roboto Mono", monospace;
 }
 
 @layer my-overrides {
-    code,
-    pre,
-    .astro-code,
-    .expressive-code {
-        font-family: var(--font-mono) !important;
-        font-variant-ligatures: contextual;
-        line-height: 1.5em !important;
-    }
+  code,
+  pre,
+  .astro-code,
+  .expressive-code {
+    font-family: var(--font-mono) !important;
+    font-variant-ligatures: contextual;
+    line-height: 1.5em !important;
+  }
 }
 
 .video-frame {
-    aspect-ratio: 16 / 9;
-    display: block;
+  aspect-ratio: 16 / 9;
+  display: block;
 }
