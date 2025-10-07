@@ -5,7 +5,7 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-10-07 20:47:46
+Generated on: 2025-10-07 21:06:20
 
 ## Summary
 
@@ -13,14 +13,14 @@ Total dependencies: 24
 
 ### License Distribution
 
+- BSD 2-Clause "Simplified" License: 1
+- Apache License 2.0: 3
+- BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
 - Apache-2.0: 1
 - Apache-2.0, MIT: 1
 - Other: 2
 - MIT License: 13
-- BSD 2-Clause "Simplified" License: 1
-- Apache License 2.0: 3
-- BSD 3-Clause "New" or "Revised" License: 1
 
 ## Dependencies
 
