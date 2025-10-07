@@ -35,4 +35,5 @@ These flags are available for all commands:
 | [rm](/reference/rm) | Remove a change from the repository |
 | [serve](/reference/serve) | Start a Pogo server |
 | [token](/reference/token) | Manage personal access tokens |
+| [visibility](/reference/visibility) | Set repository visibility to public or private |
 | [whoami](/reference/whoami) | Show authentication information for the current repository |
