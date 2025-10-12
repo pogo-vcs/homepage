@@ -15,6 +15,10 @@ Key behaviors:
 - The previous change becomes read-only to preserve history
 - Multiple parents create a merge (combining work from different branches)
 
+By default, this command pushes local changes to the current change before
+creating a new one. Use --keep-changes to skip this push and instead add your
+local modifications to the newly created change.
+
 Typical workflow:
 1. Describe your planned changes with 'pogo describe'
 2. Make your code changes
@@ -30,6 +34,7 @@ pogo new
 ## Flags
 
 - `--description`, `-m` <string>: Description for the new change
+- `--keep-changes`: Keep local changes for the new change instead of pushing to current
 
 ## Examples
 
@@ -48,5 +53,8 @@ pogo new feature-branch-1 feature-branch-2
 
 # Create from a bookmarked change
 pogo new main
+
+# Keep local changes for the new change instead of pushing to current
+pogo new --keep-changes
 ```
 

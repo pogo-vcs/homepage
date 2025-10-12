@@ -33,6 +33,7 @@ These flags are available for all commands:
 | [new](/reference/new) | Create a new change based on one or more parent changes |
 | [push](/reference/push) | Push all changes to the configured Pogo server |
 | [rm](/reference/rm) | Remove a change from the repository |
+| [secrets](/reference/secrets) | Manage repository secrets for CI pipelines |
 | [serve](/reference/serve) | Start a Pogo server |
 | [token](/reference/token) | Manage personal access tokens |
 | [visibility](/reference/visibility) | Set repository visibility to public or private |

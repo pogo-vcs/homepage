@@ -11,6 +11,36 @@ Commands for working with CI pipelines
 pogo ci
 ```
 
+## ci runs
+
+Commands for listing and inspecting CI runs recorded on the server.
+
+## Usage
+
+```bash
+pogo ci runs
+```
+
+### ci runs inspect
+
+Inspect the log output of a CI run
+
+## Usage
+
+```bash
+pogo ci runs inspect <run-id>
+```
+
+### ci runs list
+
+List CI runs for the repository
+
+## Usage
+
+```bash
+pogo ci runs list
+```
+
 ## ci test
 
 Test a CI pipeline configuration by executing it with a synthetic event.

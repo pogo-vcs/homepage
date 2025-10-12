@@ -5,22 +5,22 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-10-10 16:24:53
+Generated on: 2025-10-12 04:38:38
 
 ## Summary
 
-Total dependencies: 24
+Total dependencies: 26
 
 ### License Distribution
 
-- MIT License: 13
+- Other: 2
+- MIT License: 14
+- Apache License 2.0: 4
 - BSD 2-Clause "Simplified" License: 1
-- Apache License 2.0: 3
 - BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
 - Apache-2.0: 1
 - Apache-2.0, MIT: 1
-- Other: 2
 
 ## Dependencies
 
@@ -33,6 +33,18 @@ Total dependencies: 24
 **License:** [Other](https://github.com/DataDog/zstd/blob/main/LICENSE)
 
 **Homepage:** https://github.com/DataDog/zstd
+
+---
+
+### github.com/Microsoft/go-winio
+
+**Version:** v0.6.2
+
+**Description:** Win32 IO-related utilities for Go
+
+**License:** [MIT License](https://github.com/microsoft/go-winio/blob/main/LICENSE)
+
+**Homepage:** https://github.com/microsoft/go-winio
 
 ---
 
@@ -69,6 +81,18 @@ Total dependencies: 24
 **License:** [MIT License](https://github.com/devsisters/go-diff3/blob/main/LICENSE)
 
 **Homepage:** https://github.com/devsisters/go-diff3
+
+---
+
+### github.com/docker/docker
+
+**Version:** v27.3.1+incompatible
+
+**Description:** The Moby Project - a collaborative project for the container ecosystem to assemble container-based systems
+
+**License:** [Apache License 2.0](https://github.com/moby/moby/blob/main/LICENSE)
+
+**Homepage:** https://github.com/moby/moby
 
 ---
 
@@ -274,7 +298,7 @@ Total dependencies: 24
 
 ### google.golang.org/grpc
 
-**Version:** v1.73.0
+**Version:** v1.75.0
 
 **License:** [Apache-2.0](https://pkg.go.dev/google.golang.org/grpc?tab=licenses)
 
@@ -284,7 +308,7 @@ Total dependencies: 24
 
 ### google.golang.org/protobuf
 
-**Version:** v1.36.6
+**Version:** v1.36.8
 
 **License:** [BSD-3-Clause](https://pkg.go.dev/google.golang.org/protobuf?tab=licenses)
 
