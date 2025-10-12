@@ -5,22 +5,22 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-10-12 04:38:38
+Generated on: 2025-10-12 13:42:25
 
 ## Summary
 
-Total dependencies: 26
+Total dependencies: 27
 
 ### License Distribution
 
+- Apache-2.0: 1
+- Apache-2.0, MIT: 1
 - Other: 2
-- MIT License: 14
+- MIT License: 15
 - Apache License 2.0: 4
 - BSD 2-Clause "Simplified" License: 1
 - BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
-- Apache-2.0: 1
-- Apache-2.0, MIT: 1
 
 ## Dependencies
 
@@ -235,6 +235,18 @@ Total dependencies: 26
 **License:** [MIT License](https://github.com/robfig/cron/blob/main/LICENSE)
 
 **Homepage:** https://github.com/robfig/cron
+
+---
+
+### github.com/sergi/go-diff
+
+**Version:** v1.4.0
+
+**Description:** Diff, match and patch text in Go
+
+**License:** [MIT License](https://github.com/sergi/go-diff/blob/main/LICENSE)
+
+**Homepage:** https://github.com/sergi/go-diff
 
 ---
 

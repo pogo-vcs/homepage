@@ -23,6 +23,7 @@ These flags are available for all commands:
 | [completion](/reference/completion) | Generate the autocompletion script for the specified shell |
 | [daemon](/reference/daemon) | Manage Pogo daemon service |
 | [describe](/reference/describe) | Set the description for the current change |
+| [diff](/reference/diff) | Show differences between changes |
 | [edit](/reference/edit) | Switch to a different change for editing |
 | [gc](/reference/gc) | Run garbage collection on the server |
 | [help](/reference/help) | Help about any command |
