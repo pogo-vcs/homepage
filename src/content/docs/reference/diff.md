@@ -27,6 +27,10 @@ what changed between two versions.
 pogo diff
 ```
 
+## Flags
+
+- `--color`: Enable colored output
+
 ## Examples
 
 ```bash

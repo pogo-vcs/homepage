@@ -24,6 +24,7 @@ These flags are available for all commands:
 | [daemon](/reference/daemon) | Manage Pogo daemon service |
 | [describe](/reference/describe) | Set the description for the current change |
 | [diff](/reference/diff) | Show differences between changes |
+| [discard](/reference/discard) | Discard local changes and revert to remote state |
 | [edit](/reference/edit) | Switch to a different change for editing |
 | [gc](/reference/gc) | Run garbage collection on the server |
 | [help](/reference/help) | Help about any command |
