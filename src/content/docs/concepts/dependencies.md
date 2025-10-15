@@ -5,22 +5,22 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-10-12 20:11:56
+Generated on: 2025-10-15 02:02:35
 
 ## Summary
 
-Total dependencies: 27
+Total dependencies: 31
 
 ### License Distribution
 
-- BSD 2-Clause "Simplified" License: 1
-- BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
 - Apache-2.0: 1
 - Apache-2.0, MIT: 1
 - Other: 2
-- MIT License: 15
+- MIT License: 19
 - Apache License 2.0: 4
+- BSD 2-Clause "Simplified" License: 1
+- BSD 3-Clause "New" or "Revised" License: 1
 
 ## Dependencies
 
@@ -60,6 +60,42 @@ Total dependencies: 27
 
 ---
 
+### github.com/alecthomas/chroma/v2
+
+**Version:** v2.20.0
+
+**Description:** A general purpose syntax highlighter in pure Go 
+
+**License:** [MIT License](https://github.com/alecthomas/chroma/blob/main/LICENSE)
+
+**Homepage:** https://github.com/alecthomas/chroma
+
+---
+
+### github.com/charmbracelet/bubbles
+
+**Version:** v0.21.0
+
+**Description:** TUI components for Bubble Tea 🫧
+
+**License:** [MIT License](https://github.com/charmbracelet/bubbles/blob/main/LICENSE)
+
+**Homepage:** https://github.com/charmbracelet/bubbles
+
+---
+
+### github.com/charmbracelet/bubbletea
+
+**Version:** v1.3.4
+
+**Description:** A powerful little TUI framework 🏗
+
+**License:** [MIT License](https://github.com/charmbracelet/bubbletea/blob/main/LICENSE)
+
+**Homepage:** https://github.com/charmbracelet/bubbletea
+
+---
+
 ### github.com/charmbracelet/huh
 
 **Version:** v0.7.0
@@ -69,6 +105,18 @@ Total dependencies: 27
 **License:** [MIT License](https://github.com/charmbracelet/huh/blob/main/LICENSE)
 
 **Homepage:** https://github.com/charmbracelet/huh
+
+---
+
+### github.com/charmbracelet/lipgloss
+
+**Version:** v1.1.0
+
+**Description:** Style definitions for nice terminal layouts 👄
+
+**License:** [MIT License](https://github.com/charmbracelet/lipgloss/blob/main/LICENSE)
+
+**Homepage:** https://github.com/charmbracelet/lipgloss
 
 ---
 

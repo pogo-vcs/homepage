@@ -32,6 +32,7 @@ pogo commit
 ## Flags
 
 - `--description`, `-m` <string>: Description for the change
+- `--force`, `-f`: Force push even if the change is readonly
 - `--no-edit`: Skip the describe step
 
 ## Examples

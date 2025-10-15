@@ -33,6 +33,7 @@ pogo describe
 ## Flags
 
 - `--description`, `-m` <string>: Description for the change
+- `--force`, `-f`: Force push even if the change is readonly
 
 ## Examples
 

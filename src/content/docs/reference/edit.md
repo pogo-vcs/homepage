@@ -33,6 +33,10 @@ pogo edit
 
 - `checkout`
 
+## Flags
+
+- `--force`, `-f`: Force push even if the change is readonly
+
 ## Examples
 
 ```bash

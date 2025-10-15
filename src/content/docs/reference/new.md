@@ -34,6 +34,7 @@ pogo new
 ## Flags
 
 - `--description`, `-m` <string>: Description for the new change
+- `--force`, `-f`: Force push even if the change is readonly
 - `--keep-changes`: Keep local changes for the new change instead of pushing to current
 
 ## Examples
