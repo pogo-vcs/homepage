@@ -30,6 +30,7 @@ pogo diff
 ## Flags
 
 - `--color`: Enable colored output
+- `--include-large-files`: Include files larger than 1MiB in diff
 
 ## Examples
 
