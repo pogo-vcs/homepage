@@ -143,7 +143,7 @@ By default, log shows the last 10 changes. You can use the `-n` flag to specify 
 
 ## Next Steps
 
-- Learn about [Pogo's core concepts](/concepts/overview)
+- Learn about core concepts [changes](/concepts/changes/) and [bookmarks](/concepts/bookmarks)
 - Set up your own [Pogo server](/guides/server-setup)
 - Explore the [CLI reference](/reference/commands)
 - Understand [conflict resolution](/concepts/conflicts)
