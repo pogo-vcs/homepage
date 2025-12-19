@@ -45,8 +45,7 @@ on:
   push:
     bookmarks: ["v*"]
 do:
-  - type: webhook
-    webhook:
+  - webhook:
       url: https://ci.example.net/job/deploy-release/buildWithParameters
       method: POST
       headers:
@@ -76,8 +75,7 @@ on:
   push:
     bookmarks: ["main"]
 do:
-  - type: container
-    container:
+  - container:
       image: node:20-alpine
       working_dir: /workspace
       commands:
@@ -105,8 +103,7 @@ on:
   push:
     bookmarks: ["main"]
 do:
-  - type: container
-    container:
+  - container:
       image: node:20-alpine
       services:
         - name: postgres
@@ -172,8 +169,7 @@ on:
   remove:
     bookmarks: ["temp-*"]
 do:
-  - type: webhook
-    webhook:
+  - webhook:
       url: https://api.example.com/webhook
       method: POST
 ```
@@ -208,8 +204,7 @@ on:
   push:
     bookmarks: ["main", "dev"]
 do:
-  - type: container
-    container:
+  - container:
       image: node:20-alpine
       services:
         - name: postgres
@@ -239,8 +234,7 @@ on:
     bookmarks: ["v*"]
 do:
   # Build and test
-  - type: container
-    container:
+  - container:
       image: golang:1.22-alpine
       commands:
         - go mod download
@@ -248,8 +242,7 @@ do:
         - go build -o app .
   
   # Notify deployment system
-  - type: webhook
-    webhook:
+  - webhook:
       url: https://deploy.example.com/api/deploy
       method: POST
       headers:
@@ -273,8 +266,7 @@ on:
   push:
     bookmarks: ["v*"]           # Only deploy on version tags
 do:
-  - type: container
-    container:
+  - container:
       image: alpine:latest
       commands:
         - apk add --no-cache curl
@@ -296,8 +288,7 @@ on:
   push:
     bookmarks: ["main"]
 do:
-  - type: container
-    container:
+  - container:
       image: ./Dockerfile  # Path to Dockerfile in repo
       commands:
         - make test
