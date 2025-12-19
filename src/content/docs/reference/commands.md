@@ -16,6 +16,7 @@ These flags are available for all commands:
 
 | Command | Description |
 |---------|-------------|
+| [assets](/reference/assets) | Manage repository assets (release binaries, etc.) |
 | [bookmark](/reference/bookmark) | Manage bookmarks for changes |
 | [ci](/reference/ci) | Manage CI pipelines |
 | [clone](/reference/clone) | Clone a repository from a Pogo server |

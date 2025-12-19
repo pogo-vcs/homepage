@@ -29,6 +29,9 @@ This command is useful for:
 
 This command pushes any changes before running.
 
+In interactive mode, you will be prompted to confirm before deletion.
+Use --force to skip confirmation.
+
 ## Usage
 
 ```bash
@@ -37,6 +40,7 @@ pogo rm
 
 ## Flags
 
+- `--force`, `-f`: Skip confirmation prompt
 - `--keep-children`: Only remove the specified change and move its children to its parents
 
 ## Examples
@@ -50,6 +54,9 @@ pogo rm broken-change-15 --keep-children
 
 # Remove a change that was created by mistake
 pogo rm accidental-branch-3
+
+# Skip confirmation prompt
+pogo rm experimental-feature-27 --force
 
 # Cannot remove bookmarked changes
 pogo rm main  # Error: cannot remove bookmarked change

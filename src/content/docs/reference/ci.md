@@ -60,7 +60,7 @@ pogo ci test [config-file]
 
 ## Flags
 
-- `--archive-url`, `-a` <string>: Archive URL for the event (default: `https://example.com/archive`)
+- `--archive-url`, `-a` <string>: Archive URL for the event (defaults to server URL)
 - `--event-type`, `-t` <string>: Event type to simulate (push or remove) (default: `push`)
 - `--rev`, `-r` <string>: Revision name for the event (default: `main`)
 
