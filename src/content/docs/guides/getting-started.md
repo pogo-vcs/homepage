@@ -20,10 +20,10 @@ Welcome to Pogo! This guide will walk you through the basics of using Pogo for v
 
 ## Install client
 
-The recommended way to install Pogo is with [Homebrew](https://brew.sh). Prebuilt binaries are available for macOS and Linux (both x64 and arm64).
+The recommended way to install Pogo is with [Homebrew](https://brew.sh). Prebuilt binaries are available for macOS and Linux.
 
 ```bash
-brew install --cask pogo-vcs/tap/pogo
+brew install pogo-vcs/tap/pogo
 ```
 
 For other installation methods, see the [Installation Guide](/guides/installation).

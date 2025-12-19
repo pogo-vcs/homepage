@@ -18,8 +18,16 @@ npm install -g @pogo-vcs/pogo
 
 ### Homebrew (macOS and Linux)
 
+As cask (recommended for macOS):
+
 ```bash
 brew install --cask pogo-vcs/tap/pogo
+```
+
+Or as a formula:
+
+```bash
+brew install pogo-vcs/tap/pogo
 ```
 
 ### Scoop (Windows)
