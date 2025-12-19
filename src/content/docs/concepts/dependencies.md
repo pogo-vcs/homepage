@@ -5,24 +5,34 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2025-12-19 01:15:49
+Generated on: 2025-12-19 15:50:40
 
 ## Summary
 
-Total dependencies: 31
+Total dependencies: 30
 
 ### License Distribution
 
+- Apache-2.0: 1
 - Apache-2.0, MIT: 1
+- MIT, Unlicense: 1
 - Other: 2
-- MIT License: 19
+- MIT License: 18
 - Apache License 2.0: 4
-- BSD 2-Clause "Simplified" License: 1
 - BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
-- Apache-2.0: 1
 
 ## Dependencies
+
+### gioui.org
+
+**Version:** v0.9.0
+
+**License:** [MIT, Unlicense](https://pkg.go.dev/gioui.org?tab=licenses)
+
+**Homepage:** https://pkg.go.dev/gioui.org
+
+---
 
 ### github.com/DataDog/zstd
 
@@ -156,18 +166,6 @@ Total dependencies: 31
 
 ---
 
-### github.com/gen2brain/beeep
-
-**Version:** v0.11.1
-
-**Description:** Go cross-platform library for sending desktop notifications, alerts and beeps
-
-**License:** [BSD 2-Clause "Simplified" License](https://github.com/gen2brain/beeep/blob/main/LICENSE)
-
-**Homepage:** https://github.com/gen2brain/beeep
-
----
-
 ### github.com/go-git/go-git/v5
 
 **Version:** v5.16.2
@@ -259,18 +257,6 @@ Total dependencies: 31
 **License:** [MIT License](https://github.com/nulab/autog/blob/main/LICENSE)
 
 **Homepage:** https://github.com/nulab/autog
-
----
-
-### github.com/rjeczalik/notify
-
-**Version:** v0.9.3
-
-**Description:** File system event notification library on steroids.
-
-**License:** [MIT License](https://github.com/rjeczalik/notify/blob/main/LICENSE)
-
-**Homepage:** https://github.com/rjeczalik/notify
 
 ---
 
