@@ -50,7 +50,7 @@ do:
       method: POST
       headers:
         Content-Type: application/json
-        Authorization: Bearer ${DEPLOY_TOKEN}
+        Authorization: Bearer {{secret "DEPLOY_TOKEN"}}
       body: '{"VERSION": "{{.Rev}}", "ZIP": "{{.ArchiveUrl}}"}'
       retry_policy:
         max_attempts: 3
@@ -246,7 +246,7 @@ do:
       url: https://deploy.example.com/api/deploy
       method: POST
       headers:
-        Authorization: Bearer ${DEPLOY_TOKEN}
+        Authorization: 'Bearer {{secret "DEPLOY_TOKEN"}}'
         Content-Type: application/json
       body: |
         {
@@ -275,7 +275,7 @@ do:
             -H "Authorization: Bearer $DEPLOY_TOKEN" \
             -d "version={{.Rev}}"
       environment:
-        DEPLOY_TOKEN: ${SECRET_TOKEN}
+        DEPLOY_TOKEN: '{{secret "SECRET_TOKEN"}}'
 ```
 
 ### Custom Dockerfile
