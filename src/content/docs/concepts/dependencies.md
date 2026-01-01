@@ -5,7 +5,7 @@ description: Pogo's first party Dependencies
 
 This document lists all first-party dependencies used by Pogo.
 
-Generated on: 2026-01-01 21:50:36
+Generated on: 2026-01-01 22:26:28
 
 ## Summary
 
@@ -13,14 +13,14 @@ Total dependencies: 30
 
 ### License Distribution
 
+- Apache License 2.0: 4
+- BSD 3-Clause "New" or "Revised" License: 1
 - BSD-3-Clause: 2
 - Apache-2.0: 1
 - Apache-2.0, MIT: 1
 - MIT, Unlicense: 1
 - Other: 2
 - MIT License: 18
-- Apache License 2.0: 4
-- BSD 3-Clause "New" or "Revised" License: 1
 
 ## Dependencies
 
@@ -60,7 +60,7 @@ Total dependencies: 30
 
 ### github.com/a-h/templ
 
-**Version:** v0.3.960
+**Version:** v0.3.977
 
 **Description:** A language for writing HTML user interfaces in Go.
 
@@ -72,7 +72,7 @@ Total dependencies: 30
 
 ### github.com/alecthomas/chroma/v2
 
-**Version:** v2.20.0
+**Version:** v2.21.1
 
 **Description:** A general purpose syntax highlighter in pure Go 
 
@@ -84,7 +84,7 @@ Total dependencies: 30
 
 ### github.com/charmbracelet/bubbles
 
-**Version:** v0.21.0
+**Version:** v0.21.1-0.20250623103423-23b8fd6302d7
 
 **Description:** TUI components for Bubble Tea 🫧
 
@@ -96,7 +96,7 @@ Total dependencies: 30
 
 ### github.com/charmbracelet/bubbletea
 
-**Version:** v1.3.4
+**Version:** v1.3.10
 
 **Description:** A powerful little TUI framework 🏗
 
@@ -108,7 +108,7 @@ Total dependencies: 30
 
 ### github.com/charmbracelet/huh
 
-**Version:** v0.7.0
+**Version:** v0.8.0
 
 **Description:** Build terminal forms and prompts 🤷🏻‍♀️
 
@@ -132,7 +132,7 @@ Total dependencies: 30
 
 ### github.com/devsisters/go-diff3
 
-**Version:** v0.0.0-20250423134348-1e1e52a2a2f6
+**Version:** v0.0.0-20250819115249-1cdef3ea7ce0
 
 **Description:** diff3go 3-way diff in go
 
@@ -144,7 +144,7 @@ Total dependencies: 30
 
 ### github.com/docker/docker
 
-**Version:** v27.3.1+incompatible
+**Version:** v28.5.2+incompatible
 
 **Description:** The Moby Project - a collaborative project for the container ecosystem to assemble container-based systems
 
@@ -168,7 +168,7 @@ Total dependencies: 30
 
 ### github.com/go-git/go-git/v5
 
-**Version:** v5.16.2
+**Version:** v5.16.4
 
 **Description:** A highly extensible Git implementation in pure Go.
 
@@ -180,7 +180,7 @@ Total dependencies: 30
 
 ### github.com/goproxy/goproxy
 
-**Version:** v0.21.0
+**Version:** v0.25.0
 
 **Description:** A minimalist Go module proxy handler.
 
@@ -192,7 +192,7 @@ Total dependencies: 30
 
 ### github.com/jackc/pgx/v5
 
-**Version:** v5.7.5
+**Version:** v5.8.0
 
 **Description:** PostgreSQL driver and toolkit for Go
 
@@ -204,7 +204,7 @@ Total dependencies: 30
 
 ### github.com/klauspost/compress
 
-**Version:** v1.18.0
+**Version:** v1.18.2
 
 **Description:** Optimized Go Compression Packages
 
@@ -250,7 +250,7 @@ Total dependencies: 30
 
 ### github.com/nulab/autog
 
-**Version:** v0.10.0
+**Version:** v0.11.0
 
 **Description:** Graph autolayout library in Go
 
@@ -286,7 +286,7 @@ Total dependencies: 30
 
 ### github.com/spf13/cobra
 
-**Version:** v1.9.1
+**Version:** v1.10.2
 
 **Description:** A Commander for modern Go CLI interactions
 
@@ -298,7 +298,7 @@ Total dependencies: 30
 
 ### github.com/spf13/pflag
 
-**Version:** v1.0.6
+**Version:** v1.0.10
 
 **Description:** Drop-in replacement for Go's flag package, implementing POSIX/GNU-style --flags.
 
@@ -334,7 +334,7 @@ Total dependencies: 30
 
 ### golang.org/x/net
 
-**Version:** v0.44.0
+**Version:** v0.48.0
 
 **License:** [BSD-3-Clause](https://pkg.go.dev/golang.org/x/net?tab=licenses)
 
@@ -344,7 +344,7 @@ Total dependencies: 30
 
 ### google.golang.org/grpc
 
-**Version:** v1.75.0
+**Version:** v1.78.0
 
 **License:** [Apache-2.0](https://pkg.go.dev/google.golang.org/grpc?tab=licenses)
 
@@ -354,7 +354,7 @@ Total dependencies: 30
 
 ### google.golang.org/protobuf
 
-**Version:** v1.36.8
+**Version:** v1.36.11
 
 **License:** [BSD-3-Clause](https://pkg.go.dev/google.golang.org/protobuf?tab=licenses)
 
