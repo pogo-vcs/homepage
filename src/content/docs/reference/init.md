@@ -6,7 +6,7 @@ description: Initialize a new repository on a given Pogo server
 Initialize a new Pogo repository in the current directory.
 
 This command creates a new repository on the specified Pogo server and configures
-the current directory to track it. A .pogo.yaml file will be created to store
+the current directory to track it. A .pogo.db file will be created to store
 the repository configuration.
 
 The repository can be made public (read-only access for everyone) or kept private
