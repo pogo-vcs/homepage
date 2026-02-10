@@ -37,9 +37,9 @@ services:
     volumes:
       - ./pogo_data/:/data/
   db:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     volumes:
-      - ./pogo_db:/var/lib/postgresql/data
+      - ./pogo_db:/var/lib/postgresql
     environment:
       - POSTGRES_USER=pogo
       - POSTGRES_PASSWORD=pogo
