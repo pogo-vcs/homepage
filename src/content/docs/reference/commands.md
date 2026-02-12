@@ -22,6 +22,7 @@ These flags are available for all commands:
 | [clone](/reference/clone) | Clone a repository from a Pogo server |
 | [commit](/reference/commit) | Describe, push, and create a new change in one command |
 | [completion](/reference/completion) | Generate the autocompletion script for the specified shell |
+| [delete-repo](/reference/delete-repo) | Delete the current repository from the server |
 | [describe](/reference/describe) | Set the description for the current change |
 | [diff](/reference/diff) | Show differences between changes |
 | [discard](/reference/discard) | Discard local changes and revert to remote state |
@@ -37,6 +38,7 @@ These flags are available for all commands:
 | [rm](/reference/rm) | Remove a change from the repository |
 | [secrets](/reference/secrets) | Manage repository secrets for CI pipelines |
 | [serve](/reference/serve) | Start a Pogo server |
+| [sync](/reference/sync) | Trunk based update of your divergent line of changes |
 | [token](/reference/token) | Manage personal access tokens |
 | [visibility](/reference/visibility) | Set repository visibility to public or private |
 | [whoami](/reference/whoami) | Show authentication information for the current repository |
